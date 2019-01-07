@@ -8,9 +8,15 @@ description: Windows Bootstrap
 # Windows Bootstrap #
 
 
+<!-- https://github.com/ajchemist-net/windows-bootstrap/archive/firstshot.zip -->
+
+
 ```powershell
 start powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-wget https://gitlab.com/api/v4/projects/10227287/repository/files/README.md/raw?ref=master -Headers @{ "PRIVATE-TOKEN" = "6qKeJzbhPzBa7xqr6GN6" } -UseBasicParsing
+$uri = "https://github.com/ajchemist-net/windows-bootstrap/archive/master.zip"
+$target = "${env:TMPDIR}\windows-bootstrap"
+wget $uri -UseBasicParsing -OutFile "$target.zip"
+Expand-Archive "$target.zip" -DestinationPath $target
 ```
