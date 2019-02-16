@@ -13,7 +13,7 @@ Write-Host "Choose DATA Drive..."
 $DataDrive = Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru
 
 
-if (Test-Path $DataDrive.root)
+if (!(Test-Path $DataDrive.root))
 {
     Write-Error "No Such Drive: $($DataDrive.root)"
 }
