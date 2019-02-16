@@ -4,6 +4,9 @@ $ErrorActionPreference = "Stop"
 #
 
 
+Write-Host "Choose DATA Drive..."
+
+
 $DataDrive = @({Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru},$DataDrive)[!($DataDrive -eq $null)]
 
 
