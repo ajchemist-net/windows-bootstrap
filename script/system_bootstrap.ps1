@@ -8,6 +8,9 @@ $selfdir = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition
 $parentdir = (Get-Item $selfdir).parent
 
 
+Write-Host "Choose DATA Drive..."
+
+
 $DataDrive = Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru
 $DebugDir = (New-Item -ItemType directory -Path $DataDrive -Name "\system_bootstrap" -Force).FullName
 

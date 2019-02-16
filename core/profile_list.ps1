@@ -4,10 +4,13 @@ $ErrorActionPreference = "Stop"
 #
 
 
+#$DataDrive = @({Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru},$DataDrive)[!($DataDrive -eq $null)]
+
+
 Write-Host "Choose DATA Drive..."
 
 
-$DataDrive = @({Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru},$DataDrive)[!($DataDrive -eq $null)]
+$DataDrive = Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru
 
 
 if (Test-Path $DataDrive.root)
