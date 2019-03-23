@@ -2,9 +2,11 @@
 @cls
 @setlocal EnableDelayedExpansion
 
+
 @set DataDrive=D:
 @set HKLMProfileList="HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"
 @vol %DataDrive% || goto :NOT_FOUND
+
 
 @echo === Make Debug data point ===
 @set DebugDir=%DataDrive%\bootstrap
@@ -15,6 +17,7 @@ if exist %DebugPoint% (
 )
 @echo.
 
+
 @echo === ProfileList Current ===
 @reg query %HKLMProfileList% /f "*" /d
 @reg export %HKLMProfileList% %DebugPoint%
@@ -23,6 +26,7 @@ rem reg query %HKLMProfileList%
 rem reg query %HKLMProfileList% /s
 rem reg query %HKLMProfileList% /f "Default"
 
+
 @echo === ProfileList Modification ===
 @reg add %HKLMProfileList% /f /v Default           /t REG_EXPAND_SZ /d %DataDrive%\Users\Default
 @reg add %HKLMProfileList% /f /v ProfilesDirectory /t REG_EXPAND_SZ /d %DataDrive%\Users
@@ -30,15 +34,18 @@ rem reg query %HKLMProfileList% /f "Default"
 @reg add %HKLMProfileList% /f /v Public            /t REG_EXPAND_SZ /d %DataDrive%\Users\Public
 @echo.
 
+
 @echo === ProfileList Changed ===
 @reg query %HKLMProfileList% /f "*" /d
 @echo.
 goto :SUCCESS
 
+
 :ALREADY_DONE
 @echo ALREADY_DONE.
 @timeout /t 6
 goto :END
+
 
 :NOT_FOUND
 @echo DataDrive %DataDrive% not found.
@@ -46,16 +53,20 @@ goto :END
 goto :END
 rem pause
 
+
 :SUCCESS
 @echo === Robocopy ===
-@rmdir /s /q %DataDrive%\Users       > NUL
-@rmdir /s /q %DataDrive%\ProgramData > NUL
+if exist %DataDrive%\Users (
+   @move %DataDrive%\Users %DataDrive%\Users.%date%
+)
+if exist %DataDrive%\ProgramData (
+   @move %DataDrive%\ProgramData %DataDrive%\ProgramData.%date%
+)
 @mkdir %DataDrive%\Users             > NUL
 @mkdir %DataDrive%\ProgramData       > NUL
 @robocopy %SystemDrive%\Users       %DataDrive%\Users       /mt:10 /e /copyall /xj /r:0 /LOG^+:%DebugDir%\ProfileList.Users.robocopy.txt
 @robocopy %SystemDrive%\ProgramData %DataDrive%\ProgramData /mt:10 /e /copyall /xj /r:0 /LOG^+:%DebugDir%\ProfileList.ProgramData.robocopy.txt
-rem @rmdir /s /q %SystemDrive%\Users
-rem @rmdir /s /q %SystemDrive%\ProgramData
+
 
 :END
 @endlocal

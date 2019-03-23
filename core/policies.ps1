@@ -7,7 +7,7 @@ Function Set-RegistryValue()
     Param($key, $name, $value, $type="Dword")
     if ((Test-Path -Path $key) -eq $false)
     {
-        New-Item -ItemType directory -Path $key | Out-Null
+        New-Item -ItemType directory -Path $key -Force | Out-Null
     }
     If ($pscmdlet.ShouldProcess($value))
     {
