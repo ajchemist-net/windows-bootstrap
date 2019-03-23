@@ -22,7 +22,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 
 
 ```powershell
-iex (irm 'bit.ly/ajchemist-net-windows-bootstrap-master)
+iex (irm 'bit.ly/ajchemist-net-windows-bootstrap-master')
+.\script\W4RH4WK\debloat-windows-10-bootstrap.ps1
 ```
 
 
