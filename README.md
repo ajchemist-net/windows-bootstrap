@@ -22,7 +22,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 
 
 ```powershell
-iex (irm 'bit.ly/ajchemist-net-windows-bootstrap-master)
+iex (irm 'bit.ly/ajchemist-net-windows-bootstrap-2019-03-24)
 ```
 
 
