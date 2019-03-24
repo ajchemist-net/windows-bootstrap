@@ -8,16 +8,23 @@ description: Windows Bootstrap
 # Windows Bootstrap #
 
 
-<!-- https://github.com/ajchemist-net/windows-bootstrap/archive/firstshot.zip -->
-
-
 - `Shift-F10`: Launch cmd.exe in OOBE
 
 
 ```powershell
 start powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy RemoteSigned
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+```
+
+
+기본적으로 사용할 optional feature를 미리 점검한다.
+
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName "netfx3" -All -LimitAccess
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All
+Get-WindowsOptionalFeature -
 ```
 
 
@@ -89,3 +96,10 @@ format fs=ntfs quick label=DATA
 assign letter=D
 exit
 ```
+
+
+## Others
+
+
+- https://github.com/W4RH4WK/Debloat-Windows-10
+- https://github.com/W4RH4WK/Debloat-Windows-10/blob/master/scripts/remove-onedrive.ps1

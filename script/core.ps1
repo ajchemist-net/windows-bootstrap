@@ -1,3 +1,6 @@
+#Requires -RunAsAdministrator
+
+
 [System.Environment]::OSVersion
 
 
@@ -15,4 +18,5 @@ $DataDrive = (Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru).root
 $DebugDir = (New-Item -ItemType Directory -Path $DataDrive -Name "Bootstrap_Debug" -Force).FullName
 
 
+reg import "$parentdir\core\capslock_ctrl.reg"
 & "$parentdir\core\profile_list.ps1" -DataDrive $DataDrive 2>&1 | Out-String
