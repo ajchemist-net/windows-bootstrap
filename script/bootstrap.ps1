@@ -1,5 +1,5 @@
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$ref = "master"
+$ref = "stable"
 $uri = "https://codeload.github.com/ajchemist-net/windows-bootstrap/zip/$ref"
 $target = Join-Path $env:TEMP "windows-bootstrap.zip"
 Invoke-RestMethod $uri -OutFile $target
