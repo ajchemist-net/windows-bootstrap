@@ -26,3 +26,4 @@ reg import "$parentdir\core\capslock_ctrl.reg"
 
 # * Run subscript
 & "$parentdir\core\profile_list.ps1" -DataDrive $DataDrive 2>&1 | Out-String
+& "$parentdir\core\vmhost.ps1" -VMDrive $DataDrive
