@@ -7,4 +7,7 @@ Expand-Archive $target -DestinationPath $env:TEMP -Force
 cd "$env:TEMP\windows-bootstrap-$ref"
 
 
-iex ".\script\core.ps1"
+if (!$DEBUG)
+{
+    iex ".\script\core.ps1"
+}
