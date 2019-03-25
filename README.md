@@ -24,14 +24,17 @@ Set-ExecutionPolicy RemoteSigned
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName "netfx3" -All -LimitAccess
 Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All
-Get-WindowsOptionalFeature -
+Get-WindowsOptionalFeature -Online
 ```
 
 
 ```powershell
-iex (irm 'bit.ly/ajchemist-net-windows-bootstrap-master')
+iex (irm 'rebrand.ly/ajchemist-net-windows-bootstrap-master')
 .\script\W4RH4WK\debloat-windows-10-bootstrap.ps1
 ```
+
+
+- `rebrand.ly` 링크가 정상작동하지 않을 시, `bit.ly/ajchemist-net-windows-bootstrap-master` 이용
 
 
 ## Storage

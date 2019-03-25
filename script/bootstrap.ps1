@@ -9,5 +9,5 @@ cd "$env:TEMP\windows-bootstrap-$ref"
 
 if (!$DEBUG)
 {
-    & ".\core\main.ps1" 2>&1 | Out-String
+    iex (".\core\main.ps1")
 }
