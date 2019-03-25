@@ -17,4 +17,7 @@ $VHDPath = Join-Path -Path $VMDrive -ChildPath "private\vm\Hyper-V\Drives"
 MD -Path $VMPath,$VHDPath -ErrorAction 0
 
 
-Set-VMHost -VirtualHardDiskPath $VHDPath -VirtualMachinePath $VMPath | Format-List | Out-String | Write-Host
+Set-VMHost -VirtualHardDiskPath $VHDPath -VirtualMachinePath $VMPath
+
+
+Get-VMHost | Format-List | Out-String | Write-Host

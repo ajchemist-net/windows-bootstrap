@@ -9,7 +9,8 @@
 $ErrorActionPreference = "Stop"
 
 
-$selfdir = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition)
+$self = $PSCommandPath
+$selfdir = $PSScriptRoot
 $parentdir = (Get-Item $selfdir).parent.fullName
 
 
