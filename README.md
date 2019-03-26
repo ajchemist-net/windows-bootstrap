@@ -101,6 +101,19 @@ exit
 ```
 
 
+## Deploy
+
+
+
+``` powershell
+New-PSDrive -Name Z -Root \\host\share -PSProvider FileSYstem
+pushd D:
+Get-WIndowsImage -ImagePath winntx.wim
+Expand-WindowsImage -ImagePath winntx.wim -Index 5 -ApplyPath W:
+bcdboot W:\Windows /s S: /l ko-kr /f UEFI /v
+```
+
+
 ## Others
 
 
