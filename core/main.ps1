@@ -22,9 +22,10 @@ $DebugDir = (New-Item -ItemType Directory -Path $DataDrive -Name "Bootstrap_Debu
 
 
 # * Registry Import
-reg import "$parentdir\core\capslock_ctrl.reg"
+reg import "$selfdir\capslock_ctrl.reg"
 
 
 # * Run subscript
-& "$parentdir\core\profile_list.ps1" -DataDrive $DataDrive 2>&1 | Out-String
-& "$parentdir\core\vmhost.ps1" -VMDrive $DataDrive
+& "$selfdir\profile_list.ps1" -DataDrive $DataDrive 2>&1 | Out-String
+& "$selfdir\termsrv.ps1"
+& "$selfdir\vmhost.ps1" -VMDrive $DataDrive
