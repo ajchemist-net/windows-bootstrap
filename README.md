@@ -106,10 +106,11 @@ exit
 
 
 ``` powershell
-New-PSDrive -Name Z -Root \\host\share -PSProvider FileSYstem
+New-PSDrive -Name Z -Root \\host\share -PSProvider FileSystem
 pushd D:
 Get-WIndowsImage -ImagePath winntx.wim
 Expand-WindowsImage -ImagePath winntx.wim -Index 5 -ApplyPath W:
+# Add-WindowsDriver -Path W: -Driver $env:TEMP\drivers -Recurse -ForceUnsigned
 bcdboot W:\Windows /s S: /l ko-kr /f UEFI /v
 ```
 
