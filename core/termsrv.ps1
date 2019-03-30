@@ -27,7 +27,7 @@ Set-RegistryValue -Key "HKLM:\System\CurrentControlSet\Control\Terminal Server" 
 Set-RegistryValue -Key "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -name "UserAuthentication" -Value 1
 
 
-Get-NetFirewallRule -DisplayGroup "Microsoft Remote Desktop" | Enable-NetFirewallRule
+Get-NetFirewallRule -Name "RemoteDesktop*" | Enable-NetFirewallRule
 
 
 Test-NetConnection localhost -CommonTCPPort rdp
