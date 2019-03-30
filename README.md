@@ -18,6 +18,13 @@ Set-ExecutionPolicy RemoteSigned
 ```
 
 
+스토리지 점검
+``` powershell
+Get-Disk
+Get-Volume
+```
+
+
 기본적으로 사용할 optional feature를 미리 점검한다.
 
 
