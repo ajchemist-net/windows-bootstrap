@@ -26,6 +26,13 @@ reg import "$selfdir\capslock_ctrl.reg"
 
 
 # * Run subscript
+
+
 & "$selfdir\profile_list.ps1" -DataDrive $DataDrive 2>&1 | Out-String
 & "$selfdir\termsrv.ps1"
-& "$selfdir\vmhost.ps1" -VMDrive $DataDrive
+
+
+if (Get-Module -list "Hyper-V")
+{
+    & "$selfdir\vmhost.ps1" -VMDrive $DataDrive
+}
