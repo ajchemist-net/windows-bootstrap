@@ -47,6 +47,9 @@ iex (irm 'rebrand.ly/ajchemist-net-windows-bootstrap-master')
 ## Storage
 
 
+### System Drive Configuration
+
+
 ```powershell
 $GUID_EFI_SYSTEM_PARTITION = '{c12a7328-f81f-11d2-ba4b-00a0c93ec93b}'
 
@@ -62,6 +65,9 @@ $disk `
     | New-Partition -UseMaximumSize -DriveLetter W `
     | Format-Volume -FileSystem NTFS -NewFileSystemLabel WINNT -confirm:$false
 ```
+
+
+### Data Drive Configuration
 
 
 ```powershell
@@ -120,6 +126,16 @@ Expand-WindowsImage -ImagePath winntx.wim -Index 5 -ApplyPath W:
 # Add-WindowsDriver -Path W: -Driver $env:TEMP\drivers -Recurse -ForceUnsigned
 bcdboot W:\Windows /s S: /l ko-kr /f UEFI /v
 ```
+
+
+## Scenario
+
+
+### 1
+
+
+1. [시스템 드라이브 구성](#system-drive-configuration)
+2. [Deploy](#deploy)
 
 
 ## Others
