@@ -10,7 +10,7 @@ $DataDrive = Get-PSDrive -PSProvider FileSystem | Out-GridView -PassThru
 $data_drive_pw = Read-Password
 Enable-BitLocker $DataDrive.root -UsedSpaceOnly -PasswordProtector -Password $data_drive_pw
 $data_volume = Add-BitLockerKeyProtector $DataDrive.root -RecoveryPasswordProtector
-$data_recovery_pw = $data_volume.KeyProtector | Where-Object { $_.KeyProtectorType -eq "RecoveryPassword" } Select-Object -ExpandProperty RecoveryPassword
+$data_recovery_pw = $data_volume.KeyProtector | Where-Object { $_.KeyProtectorType -eq "RecoveryPassword" } | Select-Object -ExpandProperty RecoveryPassword
 $startScriptContent = [string]::Format("Unlock-BitLocker {0} -RecoveryPassword {1}", $DataDrive.root, $data_recovery_pw)
 Write-Host $startScriptContent >> "$env:SystemRoot\System32\GroupPolicy\Machine\Scripts\Startup\unlock_bitlocker_data_drive.ps1"
 
