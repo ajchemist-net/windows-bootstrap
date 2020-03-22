@@ -22,6 +22,9 @@ Set-ExecutionPolicy RemoteSigned
 ``` powershell
 Get-Disk
 Get-Volume
+
+# DATA 볼륨 드라이브 문자 할당
+Get-Partition -DiskNumber 1 | Set-Partiiton -NewDriveLetter D
 ```
 
 
@@ -125,6 +128,12 @@ Get-WIndowsImage -ImagePath winntx.wim
 Expand-WindowsImage -ImagePath winntx.wim -Index 5 -ApplyPath W:
 # Add-WindowsDriver -Path W: -Driver $env:TEMP\drivers -Recurse -ForceUnsigned
 bcdboot W:\Windows /s S: /l ko-kr /f UEFI /v
+```
+
+
+``` batchfile
+dism /get-wiminfo /wimfile:winntx.wim
+dism /apply-image /imagefile:winntx.wim /index:5 /applydir:W:
 ```
 
 
