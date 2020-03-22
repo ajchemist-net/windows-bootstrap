@@ -1,7 +1,7 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 
-$ref = "081e7a78560781b8f3579573fc5a8e4416cae85e"
+$ref = "ae78e9c8547c65cff314348b78e3066e7cd5b150"
 $url = "https://codeload.github.com/W4RH4WK/Debloat-Windows-10/zip/$ref"
 $fileName = Join-Path $env:TEMP "Debloat-Windows-10.zip"
 
