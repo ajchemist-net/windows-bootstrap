@@ -128,6 +128,39 @@ bcdboot W:\Windows /s S: /l ko-kr /f UEFI /v
 ```
 
 
+## BitLocker
+
+
+### Enable BitLocker on data drive
+
+
+``` powershell
+.\scripts\bitlocker-data-drive.ps1
+```
+
+
+`gpedit.msc`
+
+
+`로컬 컴퓨터 정책\컴퓨터 구성\Windows 설정\스크립트\시작프로그램` 파워셀 스크립트 `unlock_bitlocker_data_drive.ps1` 등록
+
+
+### Enable BitLocker on system drive
+
+
+`gpedit.msc`
+
+
+`로컬 컴퓨터 정책\컴퓨터 구성\관리 템플릿\Windows\BitLocker 드라이브 암호화\운영 체제 드라이브\시작 시 추가 인증 요구` -> 사용, 호환 TPM이 없는 BitLocker 허용 체크
+
+
+``` powershell
+$system_drive_pw = Read-Host "Password" -AsSecureString
+Enable-BitLocker $env:SystemDrive -UsedSpaceOnly -PasswordProtector -Password $system_drive_pw
+Add-BitLockerKeyProtector $env:SystemDrive -RecoveryPasswordProtector
+```
+
+
 ## Scenario
 
 
