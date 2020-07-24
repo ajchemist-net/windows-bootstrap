@@ -24,7 +24,7 @@ Get-Disk
 Get-Volume
 
 # DATA 볼륨 드라이브 문자 할당
-Get-Partition -DiskNumber 1 | Set-Partiiton -NewDriveLetter D
+Get-Partition -DiskNumber 1 | Set-Partition -NewDriveLetter D
 ```
 
 
