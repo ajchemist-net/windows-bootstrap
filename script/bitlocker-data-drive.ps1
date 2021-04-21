@@ -13,7 +13,7 @@ $data_volume = Add-BitLockerKeyProtector $DataDrive.root -RecoveryPasswordProtec
 $data_recovery_pw = $data_volume.KeyProtector | Where-Object { $_.KeyProtectorType -eq "RecoveryPassword" } | Select-Object -ExpandProperty RecoveryPassword
 $startScriptContent = [string]::Format("Unlock-BitLocker {0} -RecoveryPassword {1}", $DataDrive.root, $data_recovery_pw)
 mkdir -p $env:SystemRoot\System32\GroupPolicy\Machine\Scripts\Startup
-Write-Host $startScriptContent >> "$env:SystemRoot\System32\GroupPolicy\Machine\Scripts\Startup\unlock_bitlocker_data_drive.ps1"
+Add-Content -Path "$env:SystemRoot\System32\GroupPolicy\Machine\Scripts\Startup\unlock_bitlocker_data_drive.ps1" -Value $startScriptContent
 
 
 <#
