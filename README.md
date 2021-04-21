@@ -157,6 +157,9 @@ dism /apply-image /imagefile:winntx.wim /index:5 /applydir:W:
 ### Enable BitLocker on system drive
 
 
+> :warning: **DO NOT USE THIS STEP AT OOBE**
+
+
 `gpedit.msc`
 
 
