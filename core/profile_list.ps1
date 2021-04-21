@@ -37,7 +37,7 @@ Function Export-ProfileList()
 {
     Write-Host "*** ProfileList Original"
     Get-Item $ProfileListRegKey
-    reg export (Convert-Path $ProfileListRegKey) "$DebugDir\ProfileList.reg"
+    reg export (Convert-Path $ProfileListRegKey) "$DebugDir\ProfileList.reg" /y
 }
 
 
